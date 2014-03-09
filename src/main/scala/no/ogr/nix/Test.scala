@@ -8,7 +8,7 @@ import java.nio.ByteBuffer
 object HelloTest {
   def main(args: Array[String]) {
     val eventLoop = new EventLoop()
-    SocketServer(eventLoop, new InetSocketAddress(8080), 5) {
+    SocketServer(eventLoop, new InetSocketAddress(8080)) {
       observable =>
         observable.subscribe(new Observer[Event[SocketChannel]] {
           override def onNext(event: Event[SocketChannel]) {
@@ -40,7 +40,7 @@ object EchoTest {
 
   def main(args: Array[String]) {
     val eventLoop = new EventLoop()
-    SocketServer(eventLoop, new InetSocketAddress(8080), 5) {
+    SocketServer(eventLoop, new InetSocketAddress(8080)) {
       observable =>
         observable.subscribe(echoObserver)
     }

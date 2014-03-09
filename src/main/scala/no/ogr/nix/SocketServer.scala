@@ -25,7 +25,7 @@ class SocketServer(eventLoop: EventLoop,
 object SocketServer {
   type PipelineFactory = (Observable[Event[SocketChannel]]) => Unit
 
-  def apply(eventLoop: EventLoop, address: InetSocketAddress, backlog: Int)(factory: PipelineFactory): SocketServer = {
+  def apply(eventLoop: EventLoop, address: InetSocketAddress, backlog: Int = 0)(factory: PipelineFactory): SocketServer = {
     val channel = ServerSocketChannel.open().bind(address, backlog)
     new SocketServer(eventLoop, channel, factory)
   }
