@@ -5,7 +5,7 @@ import rx.lang.scala.Observer
 import java.nio.channels.{SocketChannel, SelectionKey, ServerSocketChannel}
 import java.nio.ByteBuffer
 
-object HelloTest {
+object HelloExample {
   def main(args: Array[String]) {
     val eventLoop = new EventLoop()
     SocketServer(eventLoop, new InetSocketAddress(8080)) {
@@ -21,7 +21,7 @@ object HelloTest {
   }
 }
 
-object EchoTest {
+object EchoExample {
   val echoObserver = new Observer[Event[SocketChannel]] {
     override def onNext(event: Event[SocketChannel]) {
       val buffer = ByteBuffer.allocate(1024)
